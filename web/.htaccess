@@ -1,0 +1,14 @@
+Options +FollowSymlinks
+IndexIgnore */*
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # Jika direktori atau file fisik tidak ada, arahkan ke index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . index.php
+
+    # Atur header HTTP untuk mengizinkan Gii agar dapat diakses
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
